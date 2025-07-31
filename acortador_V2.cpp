@@ -11,7 +11,7 @@ string textoEscrito;
 LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
     if (nCode >= 0 && wParam == WM_KEYDOWN) {
         
-        system("cls");
+        // system("cls");
         
         KBDLLHOOKSTRUCT* kbStruct = (KBDLLHOOKSTRUCT*)lParam;
 
