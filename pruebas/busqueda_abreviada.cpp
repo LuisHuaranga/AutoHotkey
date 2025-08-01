@@ -22,10 +22,9 @@ map<string, string> abreviaturas = {
 int main() {
     
     string textoAbreviado = "salo";
-    string textoCompleto;
-
+    
     try {
-        textoCompleto = abreviaturas.at(textoAbreviado); 
+        string textoCompleto = abreviaturas.at(textoAbreviado); 
         cout << "El texto completo es: " << textoCompleto << endl;
     } catch(const out_of_range& e) {
         cout << "Elemento no encontrado\n";
