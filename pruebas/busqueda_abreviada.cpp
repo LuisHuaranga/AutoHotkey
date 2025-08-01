@@ -3,10 +3,15 @@
 #include <map>
 
 
-using namespace std;
+using std::string;
+using std::cout;
+using std::endl;
+using std::size_t;
+using std::map;
+
 
 // Diccionario de abreviaturas
-map<string, string> abreviaturas = {
+map<string, string> abbreviations = {
     {"sal", "saludos"},
     {"gra", "gracias"},
     {"porf", "por favor"},
@@ -21,18 +26,17 @@ map<string, string> abreviaturas = {
 
 int main() {
     
-    string textoAbreviado = "salo";
-    
-    try {
-        string textoCompleto = abreviaturas.at(textoAbreviado); 
-        cout << "El texto completo es: " << textoCompleto << endl;
-    } catch(const out_of_range& e) {
-        cout << "Elemento no encontrado\n";
+    string abbreviated = "21838374";
+
+    for (size_t i = 0; i < abbreviated.length(); i++ ){
+        string subtext = abbreviated.substr(i);
+
+        if (abbreviations.find(subtext) != abbreviations.end()) {
+            string fullText = abbreviations.at(subtext);         
+            cout << abbreviated << ": "<< fullText << endl;
+            break;
+        }                  
     }
-    
-    if (abreviaturas.find(textoAbreviado) == abreviaturas.end()) {
-        cout << textoAbreviado << " NO EXISTE!!" << endl;
-    }   
-    
+
     return 0;
 }
