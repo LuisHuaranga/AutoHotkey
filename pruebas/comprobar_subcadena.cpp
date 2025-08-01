@@ -4,11 +4,12 @@ using namespace std;
 
 int main() {
     
-    string text = "LuisoHuaranga";
+    string text = "012345prog";
     cout << "Longitud :" << text.length() << endl;
     
     for (int i = 0; i < text.length(); i++ ){
-        cout << text[i] << endl;
+        string sub = text.substr(i);
+        cout << sub << endl;
     }
     return 0;
 }
