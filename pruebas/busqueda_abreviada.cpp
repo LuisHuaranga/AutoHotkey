@@ -32,7 +32,7 @@ int main() {
         string subtext = abbreviated.substr(i);
 
         if (abbreviations.find(subtext) != abbreviations.end()) {
-            string fullText = abbreviations.at(subtext);         
+            string fullText = abbreviations.at(subtext);      
             cout << abbreviated << ": "<< fullText << endl;
             break;
         }                  

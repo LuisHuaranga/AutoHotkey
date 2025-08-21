@@ -1,6 +1,7 @@
 
 ## COMPILAR Y CREA EJECUTABLE CON CONSOLA
 g++ main.cpp -o hook.exe -luser32 -Wl,--subsystem,console
+g++ test.cpp -o hook.exe -luser32 -Wl,--subsystem,console
 
 
 
