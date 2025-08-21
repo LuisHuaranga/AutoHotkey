@@ -7,6 +7,7 @@ using namespace std;
 
 HHOOK hKeyboardHook;
 string textoEscrito;
+const size_t LIMITWORD = 4;
 
 LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
     if (nCode >= 0 && wParam == WM_KEYDOWN) {
@@ -28,21 +29,26 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam) {
         if (result > 0) {
             textoEscrito += (char)buffer[0];
 
-            if (textoEscrito.length() == 10) {
-                cout << textoEscrito
-                     << "  (limite 10 alcanzado, reiniciando)" << endl;
+            if (codigoTecla == VK_SPACE || codigoTecla == VK_RETURN || textoEscrito.length() >= LIMITWORD) {
+                cout << "Reiniciando buffer"<< endl;
                 textoEscrito.clear();
-            } else {
-                cout << textoEscrito << endl;
             }
+            
+            if (codigoTecla == VK_BACK && !textoEscrito.empty()){
+                cout << "holi";
+                cout << textoEscrito << "\t"<< endl;
+                textoEscrito.pop_back();
+                cout << textoEscrito << "\t"<< endl;
+            }
+            
+            
+            if (codigoTecla == VK_ESCAPE){
+                PostQuitMessage(0);
+            }
+            
+            cout << textoEscrito << "\t"<< "Tecla presionada!: " << codigoTecla << endl;
+
         }
-
-        cout << "Tecla presionada!: " << codigoTecla << endl;
-
-        if (codigoTecla == VK_ESCAPE){
-             PostQuitMessage(0);
-        }
-
     }
     return CallNextHookEx(hKeyboardHook, nCode, wParam, lParam);
 }
